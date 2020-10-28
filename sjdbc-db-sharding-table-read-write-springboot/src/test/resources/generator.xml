@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry location="/disk/m2/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar" />
+
+    <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3307/ds_3"
+            userId="w_account" password="qvYx8OaG">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.cxytiandi.sharding.po" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="META-INF/mappers" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.cxytiandi.sharding.repository"
+            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="t_order_base" domainObjectName="OrderBase" enableCountByExample="false" enableDeleteByExample="false"
+            enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByExample="false" enableSelectByPrimaryKey="true"
+            enableUpdateByExample="false" enableUpdateByPrimaryKey="true">
+            <property name="useActualColumnNames" value="false" />
+            <generatedKey column="order_id" sqlStatement="MySql" identity="true" />
+        </table>
+
+        <table tableName="t_order_item" domainObjectName="OrderItem" enableCountByExample="false" enableDeleteByExample="false"
+            enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByExample="false" enableSelectByPrimaryKey="true"
+            enableUpdateByExample="false" enableUpdateByPrimaryKey="true">
+            <property name="useActualColumnNames" value="false" />
+            <generatedKey column="order_id" sqlStatement="MySql" identity="true" />
+        </table>
+
+
+
+        <table tableName="t_sys_config" domainObjectName="SysConfig" enableCountByExample="false" enableDeleteByExample="false"
+            enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByExample="false" enableSelectByPrimaryKey="true"
+            enableUpdateByExample="false" enableUpdateByPrimaryKey="true">
+            <property name="useActualColumnNames" value="false" />
+            <generatedKey column="order_id" sqlStatement="MySql" identity="true" />
+        </table>
+
+        <table tableName="t_region_config" domainObjectName="RegionConfig" enableCountByExample="false" enableDeleteByExample="false"
+            enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByExample="false" enableSelectByPrimaryKey="true"
+            enableUpdateByExample="false" enableUpdateByPrimaryKey="true">
+            <property name="useActualColumnNames" value="false" />
+            <generatedKey column="order_id" sqlStatement="MySql" identity="true" />
+        </table>
+
+        <table tableName="t_user_order_mapping" domainObjectName="UserOrderMapping" enableCountByExample="false"
+            enableDeleteByExample="false" enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByExample="false"
+            enableSelectByPrimaryKey="true" enableUpdateByExample="false" enableUpdateByPrimaryKey="true">
+            <property name="useActualColumnNames" value="false" />
+            <generatedKey column="order_id" sqlStatement="MySql" identity="true" />
+        </table>
+    </context>
+</generatorConfiguration>
