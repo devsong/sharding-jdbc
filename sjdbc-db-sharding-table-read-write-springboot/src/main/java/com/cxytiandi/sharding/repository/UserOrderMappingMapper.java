@@ -7,7 +7,7 @@ public interface UserOrderMappingMapper {
 
     int insertSelective(UserOrderMapping record);
 
-    UserOrderMapping selectByPrimaryKey(Long id);
+    UserOrderMapping selectByPrimaryKey(Long orderId);
 
     int updateByPrimaryKeySelective(UserOrderMapping record);
 

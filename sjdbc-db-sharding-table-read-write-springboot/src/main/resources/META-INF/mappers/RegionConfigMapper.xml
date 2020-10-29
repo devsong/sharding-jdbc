@@ -1,67 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cxytiandi.sharding.repository.RegionConfigMapper">
-  <resultMap id="BaseResultMap" type="com.cxytiandi.sharding.po.RegionConfig">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="region_code" jdbcType="VARCHAR" property="regionCode" />
-    <result column="region_name" jdbcType="VARCHAR" property="regionName" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, region_code, region_name
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_region_config
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <insert id="insert" parameterType="com.cxytiandi.sharding.po.RegionConfig">
-    insert into t_region_config (id, region_code, region_name
-      )
-    values (#{id,jdbcType=INTEGER}, #{regionCode,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.cxytiandi.sharding.po.RegionConfig">
-    insert into t_region_config
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="regionCode != null">
-        region_code,
-      </if>
-      <if test="regionName != null">
-        region_name,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="regionCode != null">
-        #{regionCode,jdbcType=VARCHAR},
-      </if>
-      <if test="regionName != null">
-        #{regionName,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cxytiandi.sharding.po.RegionConfig">
-    update t_region_config
-    <set>
-      <if test="regionCode != null">
-        region_code = #{regionCode,jdbcType=VARCHAR},
-      </if>
-      <if test="regionName != null">
+    <resultMap id="BaseResultMap" type="com.cxytiandi.sharding.po.RegionConfig">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="region_code" jdbcType="VARCHAR" property="regionCode" />
+        <result column="region_name" jdbcType="VARCHAR" property="regionName" />
+        <result column="level" jdbcType="INTEGER" property="level" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="parent_region_code" jdbcType="VARCHAR" property="parentRegionCode" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="_timestamp" jdbcType="TIMESTAMP" property="timestamp" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, region_code, region_name, level, status, parent_region_code, create_time, _timestamp
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_region_config
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <insert id="insert" parameterType="com.cxytiandi.sharding.po.RegionConfig">
+        insert into t_region_config (id, region_code, region_name,
+        level, status, parent_region_code,
+        create_time, _timestamp)
+        values (#{id,jdbcType=BIGINT}, #{regionCode,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR},
+        #{level,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{parentRegionCode,jdbcType=VARCHAR},
+        #{createTime,jdbcType=TIMESTAMP}, #{timestamp,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.cxytiandi.sharding.po.RegionConfig">
+        insert into t_region_config
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="regionCode != null">
+                region_code,
+            </if>
+            <if test="regionName != null">
+                region_name,
+            </if>
+            <if test="level != null">
+                level,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="parentRegionCode != null">
+                parent_region_code,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="timestamp != null">
+                _timestamp,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="regionCode != null">
+                #{regionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="regionName != null">
+                #{regionName,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="parentRegionCode != null">
+                #{parentRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp != null">
+                #{timestamp,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cxytiandi.sharding.po.RegionConfig">
+        update t_region_config
+        <set>
+            <if test="regionCode != null">
+                region_code = #{regionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="regionName != null">
+                region_name = #{regionName,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="parentRegionCode != null">
+                parent_region_code = #{parentRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp != null">
+                _timestamp = #{timestamp,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cxytiandi.sharding.po.RegionConfig">
+        update t_region_config
+        set region_code = #{regionCode,jdbcType=VARCHAR},
         region_name = #{regionName,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.cxytiandi.sharding.po.RegionConfig">
-    update t_region_config
-    set region_code = #{regionCode,jdbcType=VARCHAR},
-      region_name = #{regionName,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        level = #{level,jdbcType=INTEGER},
+        status = #{status,jdbcType=INTEGER},
+        parent_region_code = #{parentRegionCode,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        _timestamp = #{timestamp,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

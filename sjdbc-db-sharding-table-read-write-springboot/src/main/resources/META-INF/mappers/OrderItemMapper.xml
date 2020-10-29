@@ -6,14 +6,14 @@
     <result column="order_id" jdbcType="BIGINT" property="orderId" />
     <result column="product_id" jdbcType="VARCHAR" property="productId" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
-    <result column="region_code" jdbcType="VARCHAR" property="regionCode" />
-    <result column="lat" jdbcType="VARCHAR" property="lat" />
-    <result column="lng" jdbcType="VARCHAR" property="lng" />
+    <result column="product_num" jdbcType="INTEGER" property="productNum" />
+    <result column="product_price" jdbcType="INTEGER" property="productPrice" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="_timestamp" jdbcType="TIMESTAMP" property="timestamp" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, order_id, product_id, product_name, region_code, lat, lng, create_time, _timestamp
+    id, order_id, product_id, product_name, product_num, product_price, create_time, 
+    _timestamp
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -22,24 +22,24 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
   <insert id="insert" parameterType="com.cxytiandi.sharding.po.OrderItem">
-    <selectKey keyProperty="orderId" order="AFTER" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_order_item (id, product_id, product_name, 
-      region_code, lat, lng, 
-      create_time, _timestamp)
-    values (#{id,jdbcType=BIGINT}, #{productId,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
-      #{regionCode,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{timestamp,jdbcType=TIMESTAMP})
+    insert into t_order_item (order_id, product_id, product_name, 
+      product_num, product_price, create_time, 
+      _timestamp)
+    values (#{orderId,jdbcType=BIGINT}, #{productId,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{productNum,jdbcType=INTEGER}, #{productPrice,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{timestamp,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.cxytiandi.sharding.po.OrderItem">
-    <selectKey keyProperty="orderId" order="AFTER" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into t_order_item
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="orderId != null">
+        order_id,
       </if>
       <if test="productId != null">
         product_id,
@@ -47,14 +47,11 @@
       <if test="productName != null">
         product_name,
       </if>
-      <if test="regionCode != null">
-        region_code,
+      <if test="productNum != null">
+        product_num,
       </if>
-      <if test="lat != null">
-        lat,
-      </if>
-      <if test="lng != null">
-        lng,
+      <if test="productPrice != null">
+        product_price,
       </if>
       <if test="createTime != null">
         create_time,
@@ -64,8 +61,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
       </if>
       <if test="productId != null">
         #{productId,jdbcType=VARCHAR},
@@ -73,14 +70,11 @@
       <if test="productName != null">
         #{productName,jdbcType=VARCHAR},
       </if>
-      <if test="regionCode != null">
-        #{regionCode,jdbcType=VARCHAR},
+      <if test="productNum != null">
+        #{productNum,jdbcType=INTEGER},
       </if>
-      <if test="lat != null">
-        #{lat,jdbcType=VARCHAR},
-      </if>
-      <if test="lng != null">
-        #{lng,jdbcType=VARCHAR},
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -102,14 +96,11 @@
       <if test="productName != null">
         product_name = #{productName,jdbcType=VARCHAR},
       </if>
-      <if test="regionCode != null">
-        region_code = #{regionCode,jdbcType=VARCHAR},
+      <if test="productNum != null">
+        product_num = #{productNum,jdbcType=INTEGER},
       </if>
-      <if test="lat != null">
-        lat = #{lat,jdbcType=VARCHAR},
-      </if>
-      <if test="lng != null">
-        lng = #{lng,jdbcType=VARCHAR},
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -125,9 +116,8 @@
     set order_id = #{orderId,jdbcType=BIGINT},
       product_id = #{productId,jdbcType=VARCHAR},
       product_name = #{productName,jdbcType=VARCHAR},
-      region_code = #{regionCode,jdbcType=VARCHAR},
-      lat = #{lat,jdbcType=VARCHAR},
-      lng = #{lng,jdbcType=VARCHAR},
+      product_num = #{productNum,jdbcType=INTEGER},
+      product_price = #{productPrice,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       _timestamp = #{timestamp,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}

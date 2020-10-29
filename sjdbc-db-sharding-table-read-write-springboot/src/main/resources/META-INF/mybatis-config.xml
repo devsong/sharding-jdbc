@@ -6,8 +6,4 @@
     <typeAliases>
         <package name="com.cxytiandi.sharding.po"/>
     </typeAliases>
-    <mappers>
-        <mapper resource="META-INF/mappers/User.xml"/>
-        <mapper resource="META-INF/mappers/LouDong.xml"/>
-    </mappers>
 </configuration>

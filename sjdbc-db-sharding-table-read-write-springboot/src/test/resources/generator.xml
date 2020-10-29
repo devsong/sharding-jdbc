@@ -32,41 +32,19 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="t_order_base" domainObjectName="OrderBase" enableCountByExample="false" enableDeleteByExample="false"
-            enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByExample="false" enableSelectByPrimaryKey="true"
-            enableUpdateByExample="false" enableUpdateByPrimaryKey="true">
-            <property name="useActualColumnNames" value="false" />
-            <generatedKey column="order_id" sqlStatement="MySql" identity="true" />
-        </table>
 
         <table tableName="t_order_item" domainObjectName="OrderItem" enableCountByExample="false" enableDeleteByExample="false"
             enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByExample="false" enableSelectByPrimaryKey="true"
             enableUpdateByExample="false" enableUpdateByPrimaryKey="true">
             <property name="useActualColumnNames" value="false" />
-            <generatedKey column="order_id" sqlStatement="MySql" identity="true" />
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
 
-
-
-        <table tableName="t_sys_config" domainObjectName="SysConfig" enableCountByExample="false" enableDeleteByExample="false"
+        <table tableName="t_user_order_mapping" domainObjectName="UserOrderMapping" enableCountByExample="false" enableDeleteByExample="false"
             enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByExample="false" enableSelectByPrimaryKey="true"
             enableUpdateByExample="false" enableUpdateByPrimaryKey="true">
             <property name="useActualColumnNames" value="false" />
-            <generatedKey column="order_id" sqlStatement="MySql" identity="true" />
         </table>
 
-        <table tableName="t_region_config" domainObjectName="RegionConfig" enableCountByExample="false" enableDeleteByExample="false"
-            enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByExample="false" enableSelectByPrimaryKey="true"
-            enableUpdateByExample="false" enableUpdateByPrimaryKey="true">
-            <property name="useActualColumnNames" value="false" />
-            <generatedKey column="order_id" sqlStatement="MySql" identity="true" />
-        </table>
-
-        <table tableName="t_user_order_mapping" domainObjectName="UserOrderMapping" enableCountByExample="false"
-            enableDeleteByExample="false" enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByExample="false"
-            enableSelectByPrimaryKey="true" enableUpdateByExample="false" enableUpdateByPrimaryKey="true">
-            <property name="useActualColumnNames" value="false" />
-            <generatedKey column="order_id" sqlStatement="MySql" identity="true" />
-        </table>
     </context>
 </generatorConfiguration>

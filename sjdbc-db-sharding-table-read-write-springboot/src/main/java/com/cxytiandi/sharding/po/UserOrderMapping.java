@@ -1,28 +1,25 @@
 package com.cxytiandi.sharding.po;
 
 import java.util.Date;
+import lombok.Data;
 
 /**
  * @author guanzhisong
- * @date 2020-10-28 19:24:54
+ * @date 2020-10-29 19:18:34
  */
+@Data
 public class UserOrderMapping implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
-
-    /**
-     * 
-     */
-    private Long id;
-
-    /**
-     * 用户ID
-     */
-    private Long userId;
 
     /**
      * 订单号
      */
     private Long orderId;
+
+    /**
+     * 用户ID
+     */
+    private Long userId;
 
     /**
      * 创建时间
@@ -33,44 +30,4 @@ public class UserOrderMapping implements java.io.Serializable {
      * 更新时间戳
      */
     private Date timestamp;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
 }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cxytiandi.sharding.repository.SysConfigMapper">
+    <resultMap id="BaseResultMap" type="com.cxytiandi.sharding.po.SysConfig">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="sys_key" jdbcType="VARCHAR" property="sysKey" />
+        <result column="sys_val" jdbcType="VARCHAR" property="sysVal" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="_timestamp" jdbcType="TIMESTAMP" property="timestamp" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, sys_key, sys_val, status, create_time, _timestamp
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_sys_config
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <insert id="insert" parameterType="com.cxytiandi.sharding.po.SysConfig">
+        insert into t_sys_config (id, sys_key, sys_val,
+        status, create_time, _timestamp
+        )
+        values (#{id,jdbcType=BIGINT}, #{sysKey,jdbcType=VARCHAR}, #{sysVal,jdbcType=VARCHAR},
+        #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{timestamp,jdbcType=TIMESTAMP}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.cxytiandi.sharding.po.SysConfig">
+        insert into t_sys_config
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="sysKey != null">
+                sys_key,
+            </if>
+            <if test="sysVal != null">
+                sys_val,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="timestamp != null">
+                _timestamp,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="sysKey != null">
+                #{sysKey,jdbcType=VARCHAR},
+            </if>
+            <if test="sysVal != null">
+                #{sysVal,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp != null">
+                #{timestamp,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cxytiandi.sharding.po.SysConfig">
+        update t_sys_config
+        <set>
+            <if test="sysKey != null">
+                sys_key = #{sysKey,jdbcType=VARCHAR},
+            </if>
+            <if test="sysVal != null">
+                sys_val = #{sysVal,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp != null">
+                _timestamp = #{timestamp,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cxytiandi.sharding.po.SysConfig">
+        update t_sys_config
+        set sys_key = #{sysKey,jdbcType=VARCHAR},
+        sys_val = #{sysVal,jdbcType=VARCHAR},
+        status = #{status,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        _timestamp = #{timestamp,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

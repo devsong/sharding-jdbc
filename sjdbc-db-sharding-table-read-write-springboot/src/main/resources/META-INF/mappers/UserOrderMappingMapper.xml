@@ -1,89 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cxytiandi.sharding.repository.UserOrderMappingMapper">
-  <resultMap id="BaseResultMap" type="com.cxytiandi.sharding.po.UserOrderMapping">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="_timestamp" jdbcType="TIMESTAMP" property="timestamp" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, user_id, order_id, create_time, _timestamp
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_user_order_mapping
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <insert id="insert" parameterType="com.cxytiandi.sharding.po.UserOrderMapping">
-    <selectKey keyProperty="orderId" order="AFTER" resultType="java.lang.Long">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into t_user_order_mapping (id, user_id, create_time, 
-      _timestamp)
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{timestamp,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.cxytiandi.sharding.po.UserOrderMapping">
-    <selectKey keyProperty="orderId" order="AFTER" resultType="java.lang.Long">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into t_user_order_mapping
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="timestamp != null">
-        _timestamp,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="timestamp != null">
-        #{timestamp,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cxytiandi.sharding.po.UserOrderMapping">
-    update t_user_order_mapping
-    <set>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="orderId != null">
-        order_id = #{orderId,jdbcType=BIGINT},
-      </if>
-      <if test="createTime != null">
+    <resultMap id="BaseResultMap" type="com.cxytiandi.sharding.po.UserOrderMapping">
+        <id column="order_id" jdbcType="BIGINT" property="orderId" />
+        <result column="user_id" jdbcType="BIGINT" property="userId" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="_timestamp" jdbcType="TIMESTAMP" property="timestamp" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        order_id, user_id, create_time, _timestamp
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_user_order_mapping
+        where order_id = #{orderId,jdbcType=BIGINT}
+    </select>
+    <insert id="insert" parameterType="com.cxytiandi.sharding.po.UserOrderMapping">
+        insert into t_user_order_mapping (order_id, user_id, create_time,
+        _timestamp)
+        values (#{orderId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP},
+        #{timestamp,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.cxytiandi.sharding.po.UserOrderMapping">
+        insert into t_user_order_mapping
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">
+                order_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="timestamp != null">
+                _timestamp,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">
+                #{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp != null">
+                #{timestamp,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cxytiandi.sharding.po.UserOrderMapping">
+        update t_user_order_mapping
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp != null">
+                _timestamp = #{timestamp,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where order_id = #{orderId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cxytiandi.sharding.po.UserOrderMapping">
+        update t_user_order_mapping
+        set user_id = #{userId,jdbcType=BIGINT},
         create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="timestamp != null">
-        _timestamp = #{timestamp,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.cxytiandi.sharding.po.UserOrderMapping">
-    update t_user_order_mapping
-    set user_id = #{userId,jdbcType=BIGINT},
-      order_id = #{orderId,jdbcType=BIGINT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      _timestamp = #{timestamp,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        _timestamp = #{timestamp,jdbcType=TIMESTAMP}
+        where order_id = #{orderId,jdbcType=BIGINT}
+    </update>
 </mapper>

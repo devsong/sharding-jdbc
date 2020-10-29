@@ -1,5 +1,9 @@
 package com.cxytiandi.sharding.repository;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.cxytiandi.sharding.po.OrderBase;
 
 public interface OrderBaseMapper {
@@ -12,4 +16,6 @@ public interface OrderBaseMapper {
     int updateByPrimaryKeySelective(OrderBase record);
 
     int updateByPrimaryKey(OrderBase record);
+
+    List<OrderBase> getGetOrderBase(@Param("orderIds") List<Long> orderIds);
 }

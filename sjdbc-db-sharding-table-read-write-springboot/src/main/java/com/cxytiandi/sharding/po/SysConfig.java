@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2020-10-29 17:01:59
  */
 @Data
-public class RegionConfig implements java.io.Serializable {
+public class SysConfig implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -17,19 +17,14 @@ public class RegionConfig implements java.io.Serializable {
     private Long id;
 
     /**
-     * 区域code码
+     * 配置键
      */
-    private String regionCode;
+    private String sysKey;
 
     /**
-     * 区域名
+     * 配置值
      */
-    private String regionName;
-
-    /**
-     * 区域级别
-     */
-    private Integer level;
+    private String sysVal;
 
     /**
      * 状态
@@ -37,17 +32,12 @@ public class RegionConfig implements java.io.Serializable {
     private Integer status;
 
     /**
-     * 父区域Code码
-     */
-    private String parentRegionCode;
-
-    /**
      * 创建时间
      */
     private Date createTime;
 
     /**
-     * 更新时间
+     * 更新时间戳
      */
     private Date timestamp;
 }
