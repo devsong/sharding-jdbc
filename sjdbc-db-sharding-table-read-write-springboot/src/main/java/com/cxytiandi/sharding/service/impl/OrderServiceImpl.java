@@ -39,7 +39,7 @@ public class OrderServiceImpl implements IOrderService {
         orderBase.setMobile("1820");
         orderBase.setOrderStatus(0);
         orderBase.setRegionCode("10000" + new Random().nextInt(10) % 4);
-        orderBase.setUserId(orderId % 10);
+        orderBase.setUserId(orderId % 20);
         orderBase.setUserName("username-" + orderBase.getUserId());
 
         orderBaseMapper.insertSelective(orderBase);
@@ -47,7 +47,7 @@ public class OrderServiceImpl implements IOrderService {
         OrderItem orderItem = new OrderItem();
         orderItem.setCreateTime(new Date());
         orderItem.setOrderId(orderId);
-        orderItem.setProductId(orderId % 5 + "");
+        orderItem.setProductId(orderId % 10 + "");
         orderItem.setProductName("productName-" + orderItem.getProductId());
         orderItem.setProductNum(1);
         orderItem.setProductPrice(100);

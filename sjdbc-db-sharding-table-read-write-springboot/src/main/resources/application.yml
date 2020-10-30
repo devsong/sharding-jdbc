@@ -1,0 +1,11 @@
+mybatis:
+  config-location: classpath:META-INF/mybatis-config.xml
+  mapper-locations: classpath:META-INF/mappers/*Mapper.xml
+server:
+  port: 8084
+spring:
+  devtools:
+    restart:
+      enabled: true
+  profiles:
+    active: dev

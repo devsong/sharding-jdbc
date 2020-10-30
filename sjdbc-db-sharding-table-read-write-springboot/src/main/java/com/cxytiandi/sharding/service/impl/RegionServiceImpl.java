@@ -48,7 +48,7 @@ public class RegionServiceImpl implements IRegionService {
             regionConfig.setCreateTime(new Date());
             regionConfig.setLevel(1);
             regionConfig.setParentRegionCode("");
-            regionConfig.setRegionCode("10000" + i);
+            regionConfig.setRegionCode("10000" + (i + 1));
             regionConfig.setRegionName(regionNames.get(i));
             regionConfig.setStatus(0);
             regionConfig.setParentRegionCode("100000");

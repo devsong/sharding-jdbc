@@ -19,8 +19,8 @@ public class OrderController {
 
     @RequestMapping("create")
     public Object create() {
-        for (int i = 0; i < 5; i++) {
-            orderService.createOrder(i);
+        for (int i = 0; i < 100; i++) {
+            orderService.createOrder(i + 1);
         }
         return "success";
     }
