@@ -163,5 +163,7 @@
         <foreach collection="orderIds" item="item" separator="," open="(" close=")">
             #{item}
         </foreach>
+        order by 
+            order_id asc
     </select>
 </mapper>

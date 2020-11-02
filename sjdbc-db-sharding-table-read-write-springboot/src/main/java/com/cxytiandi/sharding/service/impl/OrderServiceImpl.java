@@ -66,6 +66,18 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
+    public OrderBase queryOrder(Long oid) {
+        OrderBase orderBase = orderBaseMapper.selectByPrimaryKey(oid);
+        return orderBase;
+    }
+
+    @Override
+    public List<OrderBase> queryOrders(List<Long> oids) {
+        List<OrderBase> orders = orderBaseMapper.getGetOrderBase(oids);
+        return orders;
+    }
+
+    @Override
     public List<OrderBase> queryOrders(long userId, int pageSize) {
         List<Long> orderIds = userOrderMappingMapper.getUserOids(userId, pageSize);
         List<OrderBase> orderBases = orderBaseMapper.getGetOrderBase(orderIds);
